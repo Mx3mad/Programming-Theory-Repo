@@ -21,7 +21,7 @@ public class Shape : MonoBehaviour
             }
         }
     }
-    protected string shapeColor{ get; }
+    protected string shapeColor{ get; set; }
     
     protected virtual void DisplayText()
     {
