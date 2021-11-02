@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shape : MonoBehaviour
 {
+    protected GameObject details;
+    protected TextMeshPro detailsText;
     protected string localShapeName;
     public string shapeName
     {
@@ -22,14 +25,34 @@ public class Shape : MonoBehaviour
         }
     }
     protected string shapeColor{ get; set; }
-    
+
     protected virtual void DisplayText()
     {
+        detailsText.text = "Shape \nName: " + localShapeName + "\nColor: " + shapeColor;
         Debug.Log("Shape \nName: " + localShapeName + "\nColor: " + shapeColor);
     }
 
-    private void OnMouseDown()
+    protected void ShowOrHideDetails()
     {
+        if (!details.active)
+        {
+            details.SetActive(true);
+        }
+        else
+        {
+            details.SetActive(false);
+        }
+    }
+
+    protected void AssignGameObjectOfDetails()
+    {
+        details = transform.GetChild(0).gameObject;
+        detailsText = details.GetComponent<TextMeshPro>();
+    }
+
+    protected void OnMouseDown()
+    {
+        ShowOrHideDetails();
         DisplayText();
     }
 }
