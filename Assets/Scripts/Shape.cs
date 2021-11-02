@@ -7,6 +7,8 @@ public class Shape : MonoBehaviour
 {
     protected GameObject details;
     protected TextMeshPro detailsText;
+
+    //encapsulation
     protected string localShapeName;
     public string shapeName
     {
@@ -26,7 +28,8 @@ public class Shape : MonoBehaviour
     }
     protected string shapeColor{ get; set; }
 
-    protected virtual void DisplayText()
+    //abstraction
+    protected virtual void DisplayText() //polymorphism
     {
         detailsText.text = "Shape \nName: " + localShapeName + "\nColor: " + shapeColor;
         Debug.Log("Shape \nName: " + localShapeName + "\nColor: " + shapeColor);
@@ -52,6 +55,7 @@ public class Shape : MonoBehaviour
 
     protected void OnMouseDown()
     {
+        //abstraction
         ShowOrHideDetails();
         DisplayText();
     }
